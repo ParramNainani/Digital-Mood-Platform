@@ -3,26 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Mood Platform</title>
+    <title>Mood Tracker</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Space+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="mood-container">
-        <h1>Digital Mood Platform</h1>
-        <p>Choose your mood and feel the vibes!</p>
-        <div class="select-mood">
-            <select id="moodSelect" onchange="updateMood()">
+        <h1>Mood Tracker</h1>
+        <p>Track your daily mood and gain insights into your emotional patterns!</p>
+
+        <!-- Mood Log Form -->
+        <div class="mood-log">
+            <select id="moodSelect" onchange="logMood()">
                 <option value="happy">Happy</option>
                 <option value="sad">Sad</option>
                 <option value="angry">Angry</option>
                 <option value="motivated">Motivated</option>
                 <option value="calm">Calm</option>
             </select>
+            <button id="logButton" onclick="logMood()">Log Mood</button>
         </div>
-        <div id="quoteDisplay" class="quote-display">
-            <p>Pick a mood to get started!</p>
+
+        <!-- Calendar Display -->
+        <div id="calendar" class="calendar-container">
+            <h3>Calendar View</h3>
+            <div id="calendarView"></div>
         </div>
+
+        <!-- Mood Analytics -->
+        <div id="analytics" class="analytics-container">
+            <h3>Your Mood Analytics</h3>
+            <div id="mostCommonMood"></div>
+            <div id="moodTrends"></div>
+        </div>
+
         <div class="footer">
             <p>Designed for YOU!</p>
         </div>
@@ -31,3 +45,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
