@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Mood Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="mood-container">
+        <h1>Digital Mood Platform</h1>
+        <p>Choose your mood and feel the vibes!</p>
+        <div class="select-mood">
+            <select id="moodSelect" onchange="updateMood()">
+                <option value="happy">Happy</option>
+                <option value="sad">Sad</option>
+                <option value="angry">Angry</option>
+                <option value="motivated">Motivated</option>
+                <option value="calm">Calm</option>
+            </select>
+        </div>
+        <div id="quoteDisplay" class="quote-display">
+            <p>Pick a mood to get started!</p>
+        </div>
+        <div class="footer">
+            <p>Designed for YOU!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
