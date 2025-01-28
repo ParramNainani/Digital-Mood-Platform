@@ -6,31 +6,85 @@ const moodQuotes = {
     calm: "Calmness is the cradle of power."
 };
 
-const moodBackgrounds = {
-    happy: 'happy-bg',
-    sad: 'sad-bg',
-    angry: 'angry-bg',
-    motivated: 'motivated-bg',
-    calm: 'calm-bg'
+const moodColors = {
+    happy: 'happy',
+    sad: 'sad',
+    angry: 'angry',
+    motivated: 'motivated',
+    calm: 'calm'
 };
 
-function updateMood() {
-    const mood = document.getElementById("moodSelect").value;
-    const quoteDisplay = document.getElementById("quoteDisplay");
-    const body = document.body;
+const moodLog = {}; // To store the mood log (date -> mood)
+const allMoods = [];
 
-    // Change background
-    body.className = moodBackgrounds[mood];
+// Initialize Calendar for current month
+const calendarContainer = document.getElementById('calendarView');
 
-    // Show quote
-    quoteDisplay.innerHTML = `<p>${moodQuotes[mood]}</p>`;
-    quoteDisplay.style.opacity = 1;
+function generateCalendar() {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+    const firstDay = new Date(currentYear, currentMonth, 1);
+    const lastDay = new Date(currentYear, currentMonth + 1, 0);
+    const totalDays = lastDay.getDate();
+    
+    // Clear previous calendar
+    calendarContainer.innerHTML = '';
 
-    // Apply animation on quote
-    quoteDisplay.classList.add('fadeIn');
+    // Generate days
+    for (let day = 1; day <= totalDays; day++) {
+        const dayElement = document.createElement('div');
+        dayElement.classList.add('day');
+        dayElement.textContent = day;
 
-    // Reset animation after quote is shown
-    setTimeout(() => {
-        quoteDisplay.classList.remove('fadeIn');
-    }, 600);
+        // Check if mood is logged for this day
+        const dateString = `${currentYear}-${currentMonth + 1}-${day}`;
+        if (moodLog[dateString]) {
+            dayElement.classList.add('mood-logged', moodLog[dateString]);
+        }
+
+        calendarContainer.appendChild(dayElement);
+    }
 }
+
+function logMood() {
+    const selectedMood = document.getElementById('moodSelect').value;
+    const currentDate = new Date();
+    const dateString = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
+
+    // Log the mood for today
+    moodLog[dateString] = selectedMood;
+    allMoods.push(selectedMood);
+    
+    // Re-render the calendar
+    generateCalendar();
+    
+    // Update analytics
+    updateAnalytics();
+}
+
+function updateAnalytics() {
+    const moodCount = {
+        happy: 0,
+        sad: 0,
+        angry: 0,
+        motivated: 0,
+        calm: 0
+    };
+
+    allMoods.forEach(mood => {
+        moodCount[mood]++;
+    });
+
+    const mostCommonMood = Object.keys(moodCount).reduce((a, b) => moodCount[a] > moodCount[b] ? a : b);
+    
+    // Display most common mood
+    document.getElementById('mostCommonMood').innerHTML = `<p><strong>Most Common Mood:</strong> ${mostCommonMood}</p>`;
+
+    // Display mood trends (basic)
+    const trends = Object.entries(moodCount).map(([mood, count]) => `<p>${mood.charAt(0).toUpperCase() + mood.slice(1)}: ${count}</p>`).join('');
+    document.getElementById('moodTrends').innerHTML = `<p><strong>Mood Trends:</strong></p>${trends}`;
+}
+
+// Initialize calendar on page load
+generateCalendar();
