@@ -1,0 +1,99 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.mood-container {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    transition: all 0.3s ease;
+}
+
+h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: 2.5rem;
+    color: #fff;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #ddd;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.select-mood select {
+    padding: 12px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+.select-mood select:hover {
+    background-color: #555;
+}
+
+.quote-display {
+    font-size: 1.3rem;
+    margin-top: 30px;
+    color: #fff;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* Mood-specific background styles */
+.happy-bg {
+    background-color: #f9e47d;
+    background-image: url('https://www.transparenttextures.com/patterns/diagonal-stripes.png');
+}
+
+.sad-bg {
+    background-color: #6c6f88;
+    background-image: url('https://www.transparenttextures.com/patterns/triangles.png');
+}
+
+.angry-bg {
+    background-color: #f44336;
+    background-image: url('https://www.transparenttextures.com/patterns/dark-dots.png');
+}
+
+.motivated-bg {
+    background-color: #00bcd4;
+    background-image: url('https://www.transparenttextures.com/patterns/squares.png');
+}
+
+.calm-bg {
+    background-color: #4caf50;
+    background-image: url('https://www.transparenttextures.com/patterns/diamond-squares.png');
+}
