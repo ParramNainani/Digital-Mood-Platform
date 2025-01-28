@@ -8,12 +8,13 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #1e1e1e;
+    color: #fff;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
-    overflow: hidden;
-    transition: background-color 0.5s ease-in-out;
+    flex-direction: column;
+    padding-top: 30px;
 }
 
 .mood-container {
@@ -23,77 +24,100 @@ body {
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     width: 90%;
-    max-width: 500px;
-    transition: all 0.3s ease;
+    max-width: 800px;
 }
 
 h1 {
     font-family: 'Space Mono', monospace;
     font-size: 2.5rem;
-    color: #fff;
     letter-spacing: 3px;
-    margin-bottom: 10px;
 }
 
-p {
-    color: #ddd;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-}
-
-.select-mood select {
+select {
     padding: 12px;
     font-size: 1.1rem;
     border-radius: 8px;
-    border: none;
     background-color: #333;
     color: #fff;
     cursor: pointer;
-    width: 200px;
-    transition: all 0.3s ease;
+    margin: 20px;
 }
 
-.select-mood select:hover {
-    background-color: #555;
+button {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
 }
 
-.quote-display {
-    font-size: 1.3rem;
-    margin-top: 30px;
-    color: #fff;
-    font-style: italic;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+button:hover {
+    background-color: #45a049;
+}
+
+.calendar-container {
+    margin-top: 40px;
+}
+
+#calendarView {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.day {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.day:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.mood-logged {
+    background-color: #00bcd4;
+    color: white;
+}
+
+.mood-logged.happy {
+    background-color: #f9e47d;
+}
+
+.mood-logged.sad {
+    background-color: #6c6f88;
+}
+
+.mood-logged.angry {
+    background-color: #f44336;
+}
+
+.mood-logged.motivated {
+    background-color: #00bcd4;
+}
+
+.mood-logged.calm {
+    background-color: #4caf50;
+}
+
+.analytics-container {
+    margin-top: 40px;
+    font-size: 1.1rem;
+    color: #ddd;
 }
 
 .footer {
     margin-top: 40px;
     font-size: 0.9rem;
     color: #aaa;
-}
-
-/* Mood-specific background styles */
-.happy-bg {
-    background-color: #f9e47d;
-    background-image: url('https://www.transparenttextures.com/patterns/diagonal-stripes.png');
-}
-
-.sad-bg {
-    background-color: #6c6f88;
-    background-image: url('https://www.transparenttextures.com/patterns/triangles.png');
-}
-
-.angry-bg {
-    background-color: #f44336;
-    background-image: url('https://www.transparenttextures.com/patterns/dark-dots.png');
-}
-
-.motivated-bg {
-    background-color: #00bcd4;
-    background-image: url('https://www.transparenttextures.com/patterns/squares.png');
-}
-
-.calm-bg {
-    background-color: #4caf50;
-    background-image: url('https://www.transparenttextures.com/patterns/diamond-squares.png');
 }
